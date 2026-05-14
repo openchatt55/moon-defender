@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Moon Defenders</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="loading-screen" class="loading-screen" aria-live="polite" aria-label="Moon Defenders is loading">
+      <img
+        class="loading-gif"
+        src="assets/loading.gif"
+        alt="Moon Defenders loading animation"
+        decoding="async"
+      />
+      <p class="loading-copy">Preparing lunar command...</p>
+    </div>
+
+    <main id="main-menu" class="main-menu" aria-labelledby="game-title" hidden>
+      <section class="hud hud-left" aria-label="Commander profile">
+        <span class="hud-label">Commander</span>
+        <span class="hud-value">Level 1</span>
+      </section>
+
+      <section class="hud resources" aria-label="Resources">
+        <span><strong>Gold:</strong> 10000</span>
+        <span><strong>Diamonds:</strong> 100</span>
+        <span><strong>Energy:</strong> 15/15</span>
+      </section>
+
+      <section class="menu-panel" aria-label="Main menu">
+        <p class="season">SEASON 1</p>
+        <h1 id="game-title">MOON DEFENDERS</h1>
+        <p class="tagline">Command the moon base. Hold the night line.</p>
+
+        <nav class="menu-buttons" aria-label="Game sections">
+          <button class="menu-button start-button" type="button">START GAME</button>
+          <button class="menu-button shop-button" type="button">SHOP</button>
+          <button class="menu-button" type="button">SEASON PASS</button>
+          <button class="menu-button" type="button">MISSIONS</button>
+          <button class="menu-button" type="button">MAIL</button>
+          <button class="menu-button" type="button">SETTINGS</button>
+        </nav>
+      </section>
+    </main>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
