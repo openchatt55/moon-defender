@@ -39,24 +39,41 @@ body {
   inset: 0;
   z-index: 10;
   display: grid;
-  place-items: end center;
-  padding: 2rem;
+  place-items: center;
+  overflow: hidden;
+  padding: clamp(1rem, 3vw, 2rem);
   background:
-    radial-gradient(circle at center, rgba(75, 216, 255, 0.16), transparent 35rem),
-    linear-gradient(160deg, #051127, #092456 60%, #030b18);
+    radial-gradient(circle at 14% 9%, rgba(255, 255, 255, 0.96) 0 0.08rem, transparent 0.11rem),
+    radial-gradient(circle at 38% 3%, rgba(75, 216, 255, 0.8) 0 0.07rem, transparent 0.1rem),
+    radial-gradient(circle at 78% 12%, rgba(255, 255, 255, 0.9) 0 0.09rem, transparent 0.12rem),
+    radial-gradient(circle at 91% 31%, rgba(75, 216, 255, 0.65) 0 0.07rem, transparent 0.11rem),
+    linear-gradient(180deg, #061336 0%, #0b2c69 47%, #17254f 47.2%, #0d142a 100%);
   opacity: 1;
   transition: opacity 700ms ease, visibility 700ms ease;
+}
+
+.loading-screen::before {
+  content: "";
+  position: absolute;
+  inset: auto -6rem -4rem;
+  height: 34%;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(187, 213, 242, 0.42), transparent 52%),
+    linear-gradient(165deg, transparent 0 18%, rgba(125, 142, 181, 0.35) 18% 20%, transparent 20% 31%, rgba(110, 126, 161, 0.42) 31% 34%, transparent 34%),
+    linear-gradient(12deg, #27314c, #11182c 64%);
+  clip-path: polygon(0 30%, 11% 19%, 18% 27%, 29% 10%, 39% 26%, 53% 13%, 63% 30%, 77% 15%, 88% 28%, 100% 18%, 100% 100%, 0 100%);
 }
 
 .loading-screen::after {
   content: "";
   position: absolute;
-  inset: auto 8% 7%;
-  height: 7rem;
-  border: 2px solid rgba(75, 216, 255, 0.25);
-  border-radius: 50% 50% 12% 12%;
-  background: linear-gradient(180deg, rgba(75, 216, 255, 0.05), rgba(75, 216, 255, 0.14));
-  filter: blur(0.2px);
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 4% 82%, rgba(186, 55, 255, 0.85) 0 0.5rem, transparent 0.55rem),
+    radial-gradient(circle at 96% 83%, rgba(65, 226, 255, 0.7) 0 0.42rem, transparent 0.48rem),
+    linear-gradient(90deg, rgba(75, 216, 255, 0.08), transparent 22% 78%, rgba(178, 49, 255, 0.12));
+  mix-blend-mode: screen;
 }
 
 .loading-screen.is-hidden {
@@ -65,29 +82,353 @@ body {
   pointer-events: none;
 }
 
-.loading-gif {
+.intro-sky,
+.intro-base,
+.intro-aliens {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: drop-shadow(0 0 28px rgba(75, 216, 255, 0.45));
+  pointer-events: none;
 }
 
-.loading-copy {
-  z-index: 1;
-  margin: 0 0 clamp(1.25rem, 5vh, 3rem);
-  padding: 0.55rem 0.9rem;
-  border: 1px solid rgba(75, 216, 255, 0.42);
+.planet,
+.shooting-star,
+.dome,
+.turret,
+.rover,
+.alien {
+  position: absolute;
+  display: block;
+}
+
+.planet-earth {
+  top: clamp(1rem, 3vw, 2rem);
+  left: clamp(2.5rem, 9vw, 7.5rem);
+  width: clamp(5.5rem, 15vw, 9.5rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 36% 28%, rgba(255,255,255,0.95) 0 0.4rem, transparent 0.45rem),
+    radial-gradient(circle at 58% 34%, #82d94c 0 0.75rem, transparent 0.82rem),
+    radial-gradient(circle at 33% 62%, #d9d64c 0 0.95rem, transparent 1rem),
+    radial-gradient(circle at 62% 68%, #57bc38 0 0.9rem, transparent 0.95rem),
+    linear-gradient(145deg, #28d6ff, #0767d8 58%, #053a88);
+  box-shadow: inset -1.1rem -1.2rem 0 rgba(0, 24, 80, 0.35), 0 0 2rem rgba(75, 216, 255, 0.55);
+}
+
+.planet-moon {
+  top: 13%;
+  left: 4%;
+  width: clamp(3.4rem, 8vw, 5.5rem);
+  aspect-ratio: 1;
+  border: 0.35rem solid #263d70;
+  border-radius: 28% 34% 42% 36%;
+  background:
+    radial-gradient(circle at 33% 38%, #f5fcff 0 0.28rem, transparent 0.32rem),
+    radial-gradient(circle at 63% 58%, #7ea0bf 0 0.42rem, transparent 0.47rem),
+    linear-gradient(145deg, #dbeafa, #758aa6);
+  box-shadow: 0 0 0 0.15rem #8bdfff, 0 0 1.3rem rgba(75,216,255,0.4);
+}
+
+.shooting-star {
+  width: clamp(4rem, 10vw, 7rem);
+  height: 0.25rem;
   border-radius: 999px;
-  background: rgba(3, 11, 24, 0.58);
-  backdrop-filter: blur(3px);
-  color: var(--muted-blue);
-  font-weight: 800;
-  letter-spacing: 0.12em;
+  background: linear-gradient(90deg, transparent, #8feaff, #ffffff);
+  transform: rotate(-36deg);
+  filter: drop-shadow(0 0 0.7rem #4bd8ff);
+}
+
+.shooting-star-one {
+  top: 8%;
+  right: 17%;
+}
+
+.shooting-star-two {
+  top: 18%;
+  right: 4%;
+  background: linear-gradient(90deg, transparent, #ffad4b, #fff4c0);
+}
+
+.intro-base {
+  top: auto;
+  height: 48%;
+}
+
+.dome {
+  bottom: 12%;
+  width: clamp(5rem, 12vw, 8.5rem);
+  height: clamp(4.5rem, 10vw, 7rem);
+  border: 0.35rem solid #244b86;
+  border-radius: 48% 48% 18% 18%;
+  background:
+    linear-gradient(90deg, transparent 14%, rgba(75,216,255,0.8) 14% 18%, transparent 18% 44%, rgba(75,216,255,0.8) 44% 48%, transparent 48% 74%, rgba(75,216,255,0.8) 74% 78%, transparent 78%),
+    linear-gradient(180deg, rgba(152, 225, 255, 0.75), rgba(26, 77, 141, 0.92) 58%, rgba(12, 33, 72, 0.98));
+  box-shadow: 0 0 1.4rem rgba(75,216,255,0.38), inset 0 0 1.1rem rgba(255,255,255,0.2);
+}
+
+.dome-left {
+  left: 4%;
+}
+
+.dome-center {
+  left: 18%;
+  bottom: 20%;
+  transform: scale(0.82);
+}
+
+.dome-right {
+  right: 21%;
+  bottom: 17%;
+  transform: scale(0.72);
+}
+
+.turret {
+  left: 29%;
+  bottom: 21%;
+  width: clamp(5rem, 13vw, 9rem);
+  height: clamp(4rem, 9vw, 6rem);
+  border-radius: 1rem;
+  background:
+    linear-gradient(90deg, transparent 43%, #7be7ff 43% 57%, transparent 57%),
+    linear-gradient(180deg, #b7c6d7, #526c91 55%, #172b55);
+  box-shadow: 0 0 1.6rem rgba(75,216,255,0.4);
+}
+
+.turret::before,
+.turret::after {
+  content: "";
+  position: absolute;
+}
+
+.turret::before {
+  left: 64%;
+  top: 21%;
+  width: 92%;
+  height: 31%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #dce8f7, #46cfff 62%, #0d53ad);
+  box-shadow: 0 0 1.3rem rgba(75,216,255,0.72);
+}
+
+.turret::after {
+  left: 34%;
+  bottom: -22%;
+  width: 34%;
+  height: 46%;
+  border-radius: 0.4rem;
+  background: #2a4777;
+}
+
+.rover {
+  left: 1.5%;
+  bottom: 34%;
+  width: clamp(4rem, 10vw, 7rem);
+  height: clamp(2.4rem, 5vw, 3.5rem);
+  border: 0.25rem solid #2a497d;
+  border-radius: 1.4rem;
+  background: linear-gradient(180deg, #e8eef6, #7c8da6 62%, #263d6e);
+  box-shadow: 0.7rem 1.6rem 0 -0.5rem #050a16, 3.2rem 1.6rem 0 -0.5rem #050a16, 0 0 1rem rgba(75,216,255,0.38);
+}
+
+.rover::after {
+  content: "";
+  position: absolute;
+  right: 12%;
+  top: 24%;
+  width: 25%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #4bd8ff;
+  box-shadow: 0 0 1rem #4bd8ff;
+}
+
+.alien-boss {
+  top: 8%;
+  right: 4%;
+  width: clamp(7rem, 17vw, 12rem);
+  aspect-ratio: 0.95;
+  border-radius: 48% 42% 52% 40%;
+  background:
+    radial-gradient(circle at 47% 38%, #ffffff 0 0.7rem, #b995ff 0.75rem 1.15rem, #17052f 1.2rem 1.45rem, transparent 1.5rem),
+    radial-gradient(circle at 28% 22%, rgba(255,255,255,0.35) 0 0.25rem, transparent 0.3rem),
+    radial-gradient(circle at 71% 20%, rgba(255,255,255,0.24) 0 0.22rem, transparent 0.27rem),
+    linear-gradient(145deg, #c957ff, #5b149a 68%, #2a094a);
+  box-shadow: inset -1rem -1.2rem 0 rgba(37, 5, 75, 0.5), 0 0 2rem rgba(183, 50, 255, 0.64);
+}
+
+.alien-boss::before,
+.alien-boss::after,
+.alien-small::before,
+.alien-small::after,
+.alien-orb::before,
+.alien-orb::after {
+  content: "";
+  position: absolute;
+}
+
+.alien-boss::before {
+  left: 27%;
+  bottom: 18%;
+  width: 47%;
+  height: 20%;
+  border-radius: 0 0 999px 999px;
+  background: #0b0616;
+  box-shadow: inset 0 0.45rem 0 #fff0d2;
+}
+
+.alien-boss::after {
+  inset: -0.5rem;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 8% 29%, #ef80ff 0 0.35rem, transparent 0.4rem),
+    radial-gradient(circle at 78% 39%, #ef80ff 0 0.32rem, transparent 0.38rem),
+    radial-gradient(circle at 55% 82%, #ef80ff 0 0.34rem, transparent 0.4rem);
+}
+
+.alien-small {
+  right: 22%;
+  bottom: 19%;
+  width: clamp(4rem, 10vw, 7rem);
+  aspect-ratio: 1.25;
+  border-radius: 55% 50% 43% 46%;
+  background:
+    radial-gradient(circle at 46% 38%, #ffffff 0 0.55rem, #a7f047 0.6rem 0.92rem, #18380e 0.96rem 1.12rem, transparent 1.17rem),
+    linear-gradient(145deg, #d8ff22, #77aa10 68%, #405d07);
+  box-shadow: inset -0.7rem -0.6rem 0 rgba(37, 62, 4, 0.45), 0 0 1.2rem rgba(213,255,34,0.42);
+}
+
+.alien-small::before {
+  left: 20%;
+  bottom: -22%;
+  width: 72%;
+  height: 28%;
+  border-radius: 999px;
+  background: #5f850c;
+}
+
+.alien-orb {
+  right: 6%;
+  bottom: 13%;
+  width: clamp(3.3rem, 8vw, 5.5rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 47% 42%, #fff 0 0.36rem, #af7bff 0.4rem 0.7rem, #17052f 0.74rem 0.9rem, transparent 0.95rem),
+    linear-gradient(145deg, #d76cff, #6716b0);
+  box-shadow: 0 0 1.3rem rgba(183,50,255,0.6);
+}
+
+.intro-card {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  width: min(92vw, 46rem);
+  margin-top: clamp(-1rem, -2vw, -0.35rem);
   text-align: center;
+}
+
+.intro-kicker {
+  margin: 0 0 0.2rem;
+  padding: 0.25rem 0.8rem;
+  border: 1px solid rgba(75, 216, 255, 0.44);
+  border-radius: 999px;
+  background: rgba(5, 15, 34, 0.58);
+  color: var(--muted-blue);
+  font-size: clamp(0.72rem, 2vw, 0.95rem);
+  font-weight: 900;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  text-shadow: 0 0 12px rgba(75, 216, 255, 0.55);
+}
+
+.intro-logo {
+  display: grid;
+  gap: 0.1em;
+  margin: 0;
+  font-size: clamp(3.4rem, 13vw, 8.2rem);
+  line-height: 0.78;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  filter: drop-shadow(0 0.35rem 0 #071b3f) drop-shadow(0 0 1.2rem rgba(75,216,255,0.85));
+}
+
+.intro-logo span:first-child {
+  color: #f4f7ff;
+  -webkit-text-stroke: clamp(0.08rem, 0.35vw, 0.2rem) #1c2d55;
+}
+
+.intro-logo span:last-child {
+  color: #ddff1e;
+  -webkit-text-stroke: clamp(0.08rem, 0.35vw, 0.2rem) #244200;
+}
+
+.loading-console {
+  width: min(82vw, 22rem);
+  margin-top: clamp(1.3rem, 4vw, 2.3rem);
+  padding: 1rem clamp(1rem, 3vw, 1.55rem);
+  border: 0.18rem solid #00caff;
+  border-radius: 1.35rem;
+  background: rgba(5, 14, 32, 0.92);
+  box-shadow: 0 0 0 0.45rem rgba(13, 40, 83, 0.85), 0 0 1.8rem rgba(75,216,255,0.5), inset 0 0 1.2rem rgba(75,216,255,0.18);
+}
+
+.loading-track {
+  height: clamp(1.05rem, 3vw, 1.45rem);
+  overflow: hidden;
+  border: 0.18rem solid #00caff;
+  border-radius: 999px;
+  background: #04162e;
+  box-shadow: inset 0 0 0.7rem rgba(75,216,255,0.35);
+}
+
+.loading-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background:
+    repeating-linear-gradient(130deg, rgba(3,22,48,0.48) 0 0.55rem, transparent 0.55rem 1.1rem),
+    linear-gradient(90deg, #02ddff, #35a9ff 56%, #02ddff);
+  box-shadow: 0 0 0.9rem rgba(2, 221, 255, 0.85);
+  transform-origin: left;
+  animation: loading-fill 3s ease-out forwards, loading-stripes 650ms linear infinite;
+}
+
+.loading-tip {
+  margin: 1.1rem 0 0;
+  padding: 0.6rem 1rem;
+  border: 0.14rem solid rgba(75,216,255,0.55);
+  border-radius: 0.85rem;
+  background: rgba(5, 14, 32, 0.82);
+  box-shadow: 0 0 1rem rgba(75,216,255,0.26);
+  color: var(--moon-white);
+  font-size: clamp(0.82rem, 2.4vw, 1rem);
+  font-weight: 800;
+}
+
+.loading-tip strong {
+  color: #ffdf28;
+  text-shadow: 0 0 0.7rem rgba(255,223,40,0.6);
+}
+
+@keyframes loading-fill {
+  from {
+    transform: scaleX(0.06);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes loading-stripes {
+  from {
+    background-position: 0 0, 0 0;
+  }
+
+  to {
+    background-position: 1.1rem 0, 0 0;
+  }
 }
 
 .main-menu {
@@ -268,6 +609,30 @@ h1 {
 }
 
 @media (max-width: 720px) {
+  .planet-moon,
+  .rover,
+  .dome-center {
+    display: none;
+  }
+
+  .planet-earth {
+    left: 1rem;
+    width: clamp(4.4rem, 19vw, 6.2rem);
+  }
+
+  .alien-boss {
+    right: -1.5rem;
+    width: clamp(5.8rem, 24vw, 8rem);
+  }
+
+  .alien-small {
+    right: 8%;
+  }
+
+  .turret {
+    left: 8%;
+  }
+
   body {
     min-height: 100vh;
   }
@@ -299,6 +664,23 @@ h1 {
 }
 
 @media (max-width: 480px) {
+  .intro-kicker {
+    letter-spacing: 0.08em;
+  }
+
+  .intro-logo {
+    font-size: clamp(2.8rem, 17vw, 4.5rem);
+  }
+
+  .loading-console {
+    width: min(88vw, 19rem);
+  }
+
+  .alien-small,
+  .dome-right {
+    display: none;
+  }
+
   .menu-buttons {
     grid-template-columns: 1fr;
   }

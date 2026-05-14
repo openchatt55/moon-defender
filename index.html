@@ -8,13 +8,40 @@
   </head>
   <body>
     <div id="loading-screen" class="loading-screen" aria-live="polite" aria-label="Moon Defenders is loading">
-      <img
-        class="loading-gif"
-        src="assets/loading.gif"
-        alt="Moon Defenders loading animation"
-        decoding="async"
-      />
-      <p class="loading-copy">Preparing lunar command...</p>
+      <div class="intro-sky" aria-hidden="true">
+        <span class="planet planet-earth"></span>
+        <span class="planet planet-moon"></span>
+        <span class="shooting-star shooting-star-one"></span>
+        <span class="shooting-star shooting-star-two"></span>
+      </div>
+
+      <div class="intro-base" aria-hidden="true">
+        <span class="dome dome-left"></span>
+        <span class="dome dome-center"></span>
+        <span class="dome dome-right"></span>
+        <span class="turret"></span>
+        <span class="rover"></span>
+      </div>
+
+      <div class="intro-aliens" aria-hidden="true">
+        <span class="alien alien-boss"></span>
+        <span class="alien alien-small"></span>
+        <span class="alien alien-orb"></span>
+      </div>
+
+      <section class="intro-card" aria-label="Loading progress">
+        <p class="intro-kicker">Lunar Command Online</p>
+        <h1 class="intro-logo" aria-label="Moon Defenders">
+          <span>MOON</span>
+          <span>DEFENDERS</span>
+        </h1>
+        <div class="loading-console">
+          <div class="loading-track" role="progressbar" aria-label="Loading Moon Defenders" aria-valuemin="0" aria-valuemax="100">
+            <span class="loading-fill"></span>
+          </div>
+        </div>
+        <p class="loading-tip"><strong>TIP:</strong> Build shields before heavy waves.</p>
+      </section>
     </div>
 
     <main id="main-menu" class="main-menu" aria-labelledby="game-title" hidden>
