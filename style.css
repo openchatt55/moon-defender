@@ -835,5 +835,5 @@ h1 {
   }
 }
 .loading-screen {
-  background: url("assets/loading.gif") center center / cover no-repeat !important;
+  background: url("/loading.gif") center center / cover no-repeat !important;?v=4
 }
