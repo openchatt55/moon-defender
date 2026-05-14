@@ -834,3 +834,6 @@ h1 {
     grid-template-columns: 1fr;
   }
 }
+.loading-screen {
+  background: url("assets/loading.gif") center center / cover no-repeat !important;
+}
