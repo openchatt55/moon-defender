@@ -6,15 +6,9 @@ A browser game prototype for **Moon Defenders**.
 
 This repository currently contains only the intro loading screen and the main menu. Gameplay, levels, shop logic, upgrades, and other game systems have not been added yet.
 
-## Required asset
+## Intro flow
 
-Place the uploaded loading animation at this exact path:
-
-```text
-assets/loading.gif
-```
-
-The site references that path directly so it works from GitHub Pages without a build step.
+The app opens with a CSS-rendered Moon Defenders loading illustration inspired by the game splash art, fills the progress bar for at least three seconds, and then reveals the main menu. No external image asset is required for the intro screen.
 
 ## Run locally
 
