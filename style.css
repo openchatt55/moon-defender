@@ -434,11 +434,23 @@ body {
 .main-menu {
   position: relative;
   min-height: 100vh;
+  overflow: hidden;
   padding: clamp(1rem, 3vw, 2rem);
   isolation: isolate;
   opacity: 0;
   transform: translateY(12px) scale(0.99);
   transition: opacity 700ms ease, transform 700ms ease;
+  background:
+    radial-gradient(circle at 18% 13%, #ffffff 0 0.08rem, transparent 0.11rem),
+    radial-gradient(circle at 28% 31%, rgba(138, 231, 255, 0.9) 0 0.07rem, transparent 0.1rem),
+    radial-gradient(circle at 52% 11%, rgba(255, 255, 255, 0.92) 0 0.09rem, transparent 0.12rem),
+    radial-gradient(circle at 70% 34%, rgba(255, 222, 132, 0.9) 0 0.08rem, transparent 0.12rem),
+    radial-gradient(circle at 89% 22%, #ffffff 0 0.07rem, transparent 0.11rem),
+    radial-gradient(circle at 77% 17%, #fff8c8 0 0.45rem, #ffb84a 0.48rem 1.05rem, rgba(255, 116, 64, 0.75) 1.1rem 1.65rem, transparent 1.72rem),
+    radial-gradient(circle at 81% 19%, rgba(72, 18, 95, 0.36) 0 4.8rem, transparent 4.95rem),
+    radial-gradient(ellipse at 16% 58%, rgba(91, 222, 255, 0.22), transparent 28%),
+    radial-gradient(ellipse at 65% 78%, rgba(114, 69, 255, 0.26), transparent 36%),
+    linear-gradient(180deg, #06102c 0%, #0c2657 49%, #132c5c 62%, #071126 100%);
 }
 
 .main-menu::before,
@@ -450,30 +462,42 @@ body {
 }
 
 .main-menu::before {
-  right: clamp(1rem, 8vw, 7rem);
-  bottom: clamp(1rem, 7vw, 5rem);
-  width: clamp(11rem, 28vw, 24rem);
-  aspect-ratio: 1;
-  border-radius: 50%;
+  left: 50%;
+  bottom: clamp(4.2rem, 12vw, 7rem);
+  width: min(112vw, 74rem);
+  height: min(54vw, 28rem);
+  border: 0.22rem solid rgba(99, 226, 255, 0.46);
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  transform: translateX(-50%);
   background:
-    radial-gradient(circle at 36% 34%, rgba(255, 255, 255, 0.75) 0 0.6rem, transparent 0.7rem),
-    radial-gradient(circle at 66% 58%, rgba(8, 29, 67, 0.35) 0 1.25rem, transparent 1.35rem),
-    linear-gradient(145deg, #d8eef8, #7ea9c5);
-  box-shadow: inset -30px -36px 0 rgba(23, 58, 105, 0.2), 0 0 65px rgba(75, 216, 255, 0.18);
+    radial-gradient(ellipse at 50% 100%, rgba(76, 220, 255, 0.2), transparent 54%),
+    repeating-radial-gradient(ellipse at 50% 100%, rgba(121, 235, 255, 0.16) 0 0.12rem, transparent 0.14rem 2.15rem),
+    linear-gradient(90deg, transparent 0 48%, rgba(117, 232, 255, 0.22) 48.5% 51.5%, transparent 52%);
+  box-shadow:
+    0 0 3rem rgba(75, 216, 255, 0.34),
+    inset 0 0 2.8rem rgba(75, 216, 255, 0.22);
 }
 
 .main-menu::after {
   left: 50%;
-  bottom: 0;
-  width: min(96vw, 56rem);
-  height: clamp(5.5rem, 14vw, 9rem);
-  border: 2px solid rgba(75, 216, 255, 0.24);
-  border-bottom: 0;
-  border-radius: 42% 42% 0 0;
+  bottom: -0.35rem;
+  width: 116vw;
+  height: clamp(15rem, 32vw, 24rem);
+  border-radius: 50% 50% 0 0 / 34% 34% 0 0;
   transform: translateX(-50%);
   background:
-    linear-gradient(90deg, transparent 6%, rgba(75, 216, 255, 0.22) 6% 7%, transparent 7% 14%) 0 0 / 6rem 100%,
-    linear-gradient(180deg, rgba(26, 84, 138, 0.78), rgba(9, 29, 69, 0.96));
+    radial-gradient(circle at 30% 67%, rgba(21, 32, 58, 0.64) 0 1.6rem, transparent 1.75rem),
+    radial-gradient(circle at 66% 74%, rgba(14, 24, 48, 0.52) 0 2rem, transparent 2.15rem),
+    linear-gradient(90deg, transparent 0 29%, #b8cce0 29% 34%, transparent 34% 39%, #9eb6d0 39% 46%, transparent 46% 54%, #c8d6e8 54% 59%, transparent 59% 100%) 50% 33% / min(76vw, 48rem) clamp(3.8rem, 8vw, 5.4rem) no-repeat,
+    linear-gradient(180deg, #6fe5ff 0 18%, #2075c3 18% 100%) 35% 34% / clamp(0.65rem, 1.4vw, 1rem) clamp(4rem, 8vw, 6rem) no-repeat,
+    linear-gradient(180deg, #6fe5ff 0 18%, #2075c3 18% 100%) 64% 35% / clamp(0.65rem, 1.4vw, 1rem) clamp(4rem, 8vw, 6rem) no-repeat,
+    radial-gradient(ellipse at 50% 31%, rgba(84, 221, 255, 0.82) 0 4%, rgba(29, 94, 157, 0.86) 4.3% 12%, transparent 12.5%) 50% 0 / min(82vw, 50rem) 68% no-repeat,
+    linear-gradient(160deg, transparent 0 15%, rgba(255, 255, 255, 0.22) 15.3% 16.3%, transparent 16.6% 31%, rgba(85, 111, 154, 0.34) 31.2% 32.6%, transparent 32.9%),
+    linear-gradient(8deg, #7b89a3 0%, #5b6884 21%, #2d3a5a 53%, #151c34 100%);
+  box-shadow:
+    inset 0 1.3rem 2.3rem rgba(216, 238, 255, 0.18),
+    0 -1rem 3rem rgba(75, 216, 255, 0.2);
 }
 
 .main-menu.is-visible {
